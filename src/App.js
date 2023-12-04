@@ -6,6 +6,7 @@ import AppNavbar from './AppNavbar';
 import { ErrorBoundary } from 'react-error-boundary';
 import { createContext } from 'react';
 import Home from './home';
+import Logout from './auth/logout';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
   return (
@@ -37,7 +38,7 @@ const MOCK_USERS = [
   },
   {
     id: 2,
-    email: 'user1@school2.com',
+    email: 'user1@praktica.com',
     password: 'password',
     role: Role.PRAKTICA,
   },
@@ -78,10 +79,8 @@ function App() {
           <AppNavbar />
           <Routes>
             <Route path='/' element={<PrivateRoute component={Home} />} />
-            <Route
-              path='/auth/login'
-              element={<NonAuthenticatedRoute component={Login} />}
-            />
+            <Route path='/auth/login' element={<NonAuthenticatedRoute component={Login} />} />
+            <Route path='/logout' element={<PrivateRoute component={Logout} />} />
           </Routes>
         </AuthContext.Provider>
       </ErrorBoundary>
