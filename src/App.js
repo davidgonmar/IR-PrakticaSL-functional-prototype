@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import Login from './auth/login';
 import { useState } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
@@ -9,6 +9,7 @@ import Home from './home';
 import Logout from './auth/logout';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
+  
   return (
     <div role='alert'>
       <p>Something went wrong:</p>
@@ -53,6 +54,10 @@ export const useAuth = () => {
 };
 
 function App() {
+  useEffect(() => {
+    document.title = 'Praktica Training & Consulting';
+  }, []);
+
   const [user, setUser] = useState(null);
 
   const login = (user) => {

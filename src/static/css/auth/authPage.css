@@ -228,7 +228,7 @@
 
 /* Título */
 .auth-page-container h1 {
-  color: rgba(128, 0, 128, 0.524);
+  color: rgb(255, 255, 255);
   text-align: center;
   font-size: 5em;
   top: 10px;
