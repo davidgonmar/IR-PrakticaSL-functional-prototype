@@ -6,7 +6,7 @@
   font-weight: 500;
   color: #000;
   background-color: #fff;
-  border: solid 3px #557a3c;
+  border: solid 3px #000000;
   border-radius: 45px;
   box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.209);
   transition: all 0.3s ease 0s;
@@ -15,8 +15,8 @@
 }
 
 .auth-button:hover {
-  background-color: #557a3c;
-  box-shadow: 0px 15px 20px rgba(163, 96, 163, 0.4);
+  background-color: #666666;
+  box-shadow: 0px 15px 20px rgba(148, 148, 148, 0.4);
   color: #fff;
   transform: translateY(-7px);
 }
