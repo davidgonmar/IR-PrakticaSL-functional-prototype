@@ -1,12 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Navbar, NavbarBrand, NavLink, NavItem, Nav, NavbarText, NavbarToggler, Collapse } from 'reactstrap';
 import { Link } from 'react-router-dom';
-import tokenService from './services/token.service';
-import jwt_decode from "jwt-decode";
 import { AuthContext } from './App';
 
 function AppNavbar() {
-    const [username, setUsername] = useState("");
     const [collapsed, setCollapsed] = useState(true);
 
     const { user } = useContext(AuthContext);
@@ -27,10 +24,10 @@ function AppNavbar() {
         adminLinks = (
             <>
                 <NavItem>
-                    <NavLink style={{ color: "white" }} tag={Link} to="/owners">Projects</NavLink>
+                    <NavLink style={{ color: "white" }} tag={Link} to="/school/projects">Projects</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink style={{ color: "white" }} tag={Link} to="/pets">Participants</NavLink>
+                    <NavLink style={{ color: "white" }} tag={Link} to="/school/participants">Participants</NavLink>
                 </NavItem>
             </>
         )
@@ -40,13 +37,13 @@ function AppNavbar() {
         ownerLinks = (
             <>
                 <NavItem>
-                    <NavLink style={{ color: "white"  }} tag={Link} to="/myPets">Outgoing</NavLink>
+                    <NavLink style={{ color: "white"  }} tag={Link} to="/praktica/outgoing">Outgoing</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink style={{ color: "white" }} tag={Link} to="/clinics">Incoming</NavLink>
+                    <NavLink style={{ color: "white" }} tag={Link} to="/praktica/incoming">Incoming</NavLink>
                 </NavItem>
                 <NavItem>
-                    <NavLink style={{ color: "white" }} tag={Link} to="/owners">Partners</NavLink>
+                    <NavLink style={{ color: "white" }} tag={Link} to="/praktica/partners">Partners</NavLink>
                 </NavItem>
             </>
         )
@@ -70,6 +67,7 @@ function AppNavbar() {
                 </NavItem>  
             </>
         ) */
+        
         //Common Right links
         userLogout = (
             <>
