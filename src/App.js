@@ -7,6 +7,7 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { createContext } from 'react';
 import Home from './home';
 import Logout from './auth/logout';
+import Projects from './school/projects'
 
 function ErrorFallback({ error, resetErrorBoundary }) {
   
@@ -86,6 +87,7 @@ function App() {
             <Route path='/' element={<PrivateRoute component={Home} />} />
             <Route path='/auth/login' element={<NonAuthenticatedRoute component={Login} />} />
             <Route path='/logout' element={<PrivateRoute component={Logout} />} />
+            <Route path='/school/projects' element={<PrivateRoute component={Projects} />} />
           </Routes>
         </AuthContext.Provider>
       </ErrorBoundary>
