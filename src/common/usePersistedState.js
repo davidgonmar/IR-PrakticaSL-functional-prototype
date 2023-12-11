@@ -28,6 +28,13 @@ export const usePersistedState = (name, defaultValue) => {
     } catch {
       setValue(defaultValue);
     }
+
+    const listener = document.addEventListener('storage', (event) => {
+      if (event.storageArea === localStorage && event.key === name) {
+        setValue(deserialize(event.newValue));
+      }
+    });
+    return () => document.removeEventListener('storage', listener);
   }, []);
 
   React.useEffect(() => {
