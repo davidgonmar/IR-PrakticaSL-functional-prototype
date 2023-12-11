@@ -15,7 +15,7 @@ import { AuthContext } from './App';
 function AppNavbar() {
   const [collapsed, setCollapsed] = useState(true);
 
-  const { user } = useContext(AuthContext);
+  const { user, logout } = useContext(AuthContext);
   const userRole = user ? user.role : null;
 
   console.log('User:', user);
@@ -129,11 +129,7 @@ function AppNavbar() {
             style={{ color: 'white', cursor: 'pointer' }}
             id='logout'
             onClick={() => {
-              // Limpia la información del usuario del almacenamiento local
-              localStorage.removeItem('user');
-
-              // Redirige a la página de login y fuerza un recargo de la página
-              window.location.href = '/auth/login';
+              logout();
             }}
           >
             Logout

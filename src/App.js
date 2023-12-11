@@ -9,6 +9,7 @@ import Home from './home';
 import Logout from './auth/logout';
 import Projects from './school/projects';
 import { SchoolList } from './praktica/views/SchoolList';
+import { usePersistedState } from './common/usePersistedState';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
   return (
@@ -59,7 +60,7 @@ function App() {
     document.title = 'Praktica Training & Consulting';
   }, []);
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = usePersistedState('user_info', null);
 
   const login = (user) => {
     const foundUser = MOCK_USERS.find(
@@ -75,8 +76,6 @@ function App() {
   const logout = () => {
     setUser(null);
   };
-
-  const userRole = user?.role;
 
   return (
     <div>
