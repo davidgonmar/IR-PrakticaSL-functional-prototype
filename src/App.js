@@ -99,6 +99,10 @@ function App() {
               element={<PrivateRoute component={Projects} />}
             />
             <Route
+              path='/school/projects/details'
+              element={<PrivateRoute component={ProjectDetails} />}
+            />
+            <Route
               path='/praktica/schools'
               element={<PrivateRoute component={SchoolList} />}
             />
