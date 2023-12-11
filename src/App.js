@@ -8,6 +8,7 @@ import { createContext } from 'react';
 import Home from './home';
 import Logout from './auth/logout';
 import Projects from './school/projects';
+import ProjectDetails from './school/projects/details';
 import { SchoolList } from './praktica/views/SchoolList';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
@@ -100,6 +101,10 @@ function App() {
             <Route
               path='/praktica/schools'
               element={<PrivateRoute component={SchoolList} />}
+            />
+            <Route
+              path='/school/projects/details'
+              element={<PrivateRoute component={ProjectDetails} />}
             />
           </Routes>
         </AuthContext.Provider>
