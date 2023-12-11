@@ -10,6 +10,7 @@ import Logout from './auth/logout';
 import Projects from './school/projects';
 import { SchoolList } from './praktica/views/SchoolList';
 import { usePersistedState } from './common/usePersistedState';
+import { CreateSchool } from './praktica/views/CreateSchool';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
   return (
@@ -99,6 +100,10 @@ function App() {
             <Route
               path='/praktica/schools'
               element={<PrivateRoute component={SchoolList} />}
+            />
+            <Route
+              path='/praktica/schools/create'
+              element={<PrivateRoute component={CreateSchool} />}
             />
           </Routes>
         </AuthContext.Provider>
