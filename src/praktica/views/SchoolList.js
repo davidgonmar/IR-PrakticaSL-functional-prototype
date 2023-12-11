@@ -7,7 +7,7 @@ export function SchoolList() {
   const [items, setItems] = React.useState(schools);
 
   return (
-    <div className='container'>
+    <div style={{ width: '70%', marginInline: 'auto', paddingTop: 200 }}>
       <ReusableList items={schools} />
     </div>
   );
