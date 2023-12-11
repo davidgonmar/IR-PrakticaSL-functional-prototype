@@ -7,10 +7,10 @@ import { ErrorBoundary } from 'react-error-boundary';
 import { createContext } from 'react';
 import Home from './home';
 import Logout from './auth/logout';
-import Projects from './school/projects'
+import Projects from './school/projects';
+import { SchoolList } from './praktica/views/SchoolList';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
-  
   return (
     <div role='alert'>
       <p>Something went wrong:</p>
@@ -85,9 +85,22 @@ function App() {
           <AppNavbar />
           <Routes>
             <Route path='/' element={<PrivateRoute component={Home} />} />
-            <Route path='/auth/login' element={<NonAuthenticatedRoute component={Login} />} />
-            <Route path='/logout' element={<PrivateRoute component={Logout} />} />
-            <Route path='/school/projects' element={<PrivateRoute component={Projects} />} />
+            <Route
+              path='/auth/login'
+              element={<NonAuthenticatedRoute component={Login} />}
+            />
+            <Route
+              path='/logout'
+              element={<PrivateRoute component={Logout} />}
+            />
+            <Route
+              path='/school/projects'
+              element={<PrivateRoute component={Projects} />}
+            />
+            <Route
+              path='/praktica/schools'
+              element={<PrivateRoute component={SchoolList} />}
+            />
           </Routes>
         </AuthContext.Provider>
       </ErrorBoundary>
