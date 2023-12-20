@@ -1,5 +1,6 @@
 import { Input } from 'reactstrap';
 import { usePersistedState } from '../../common/usePersistedState';
+import { useNavigate } from 'react-router-dom';
 const inputs = [
   {
     name: 'name',
@@ -53,6 +54,7 @@ const inputs = [
 
 export function CreateSchool() {
   const [schools, setSchools] = usePersistedState('schools', []);
+  const navigate = useNavigate();
 
   const handleCreate = () => {
     console.log(schools);
@@ -60,6 +62,10 @@ export function CreateSchool() {
       ...schools,
       document.querySelector('input[name="name"]').value,
     ]);
+
+    new Promise((resolve) => setTimeout(resolve, 100)).then(() =>
+      navigate('/praktica/schools')
+    );
   };
   return (
     <div style={{ width: '50%', marginInline: 'auto', paddingTop: 200 }}>

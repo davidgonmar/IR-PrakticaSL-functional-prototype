@@ -33,6 +33,11 @@ export function SchoolList() {
         <Button>Filter</Button>
       </div>
       <ReusableList
+        onDeleteItem={(index) => {
+          const newSchools = [...schools];
+          newSchools.splice(index, 1);
+          setSchools(newSchools);
+        }}
         items={schools.filter((school) =>
           school.toLowerCase().includes(search.toLowerCase())
         )}

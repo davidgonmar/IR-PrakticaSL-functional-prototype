@@ -1,7 +1,7 @@
 import { FaPencil } from 'react-icons/fa6';
 import { FaTrash } from 'react-icons/fa6';
 
-export function ReusableList({ items }) {
+export function ReusableList({ items, onDeleteItem }) {
   return (
     <div
       className='d-flex flex-column'
@@ -13,13 +13,17 @@ export function ReusableList({ items }) {
       }}
     >
       {items.map((item, index) => (
-        <Item key={index} title={item} />
+        <Item
+          key={index}
+          title={item}
+          onDeleteItem={() => onDeleteItem(index)}
+        />
       ))}
     </div>
   );
 }
 
-function Item({ title }) {
+function Item({ title, onDeleteItem }) {
   return (
     <div
       className='item border border-black bg-white p-2 d-flex justify-content-between align-items-center'
@@ -27,7 +31,11 @@ function Item({ title }) {
     >
       <h3 className='m-0'>{title}</h3>
       <FaPencil className='me-2 ms-auto' style={{ height: 24, width: 24 }} />
-      <FaTrash className='me-2' style={{ height: 24, width: 24 }} />
+      <FaTrash
+        className='me-2'
+        style={{ height: 24, width: 24 }}
+        onClick={onDeleteItem}
+      />
     </div>
   );
 }
