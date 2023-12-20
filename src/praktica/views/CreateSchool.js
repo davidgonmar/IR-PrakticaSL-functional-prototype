@@ -1,69 +1,73 @@
 import { Input } from 'reactstrap';
 import { usePersistedState } from '../../common/usePersistedState';
-
 const inputs = [
   {
     name: 'name',
     type: 'text',
     placeholder: 'School name',
+    defaultValue: 'New School',
   },
   {
     name: 'category',
     type: 'text',
     placeholder: 'Category',
+    defaultValue: 'New Category',
   },
   {
     name: 'IBAN',
     type: 'text',
     placeholder: 'IBAN',
-  },
-  {
-    name: 'address',
-    type: 'text',
-    placeholder: 'Address',
+    defaultValue: 'ES1234567891234567891234',
   },
   {
     name: 'phone',
     type: 'text',
     placeholder: 'Phone',
+    defaultValue: '234234234',
   },
   {
     name: 'email',
     type: 'text',
     placeholder: 'Email',
+    defaultValue: 'dadwad@gafw.com',
   },
   {
     name: 'address',
     type: 'text',
     placeholder: 'Address',
+    defaultValue: 'New Address',
   },
   {
     name: 'city',
     type: 'text',
     placeholder: 'City',
+    defaultValue: 'Seville',
   },
   {
     name: 'country',
     type: 'text',
     placeholder: 'Country',
+    defaultValue: 'Spain',
   },
 ];
 
 export function CreateSchool() {
-  const [schools, setSchools] = usePersistedState('schools', schools);
+  const [schools, setSchools] = usePersistedState('schools', []);
 
   const handleCreate = () => {
-    const newSchool = {
-      name: document.querySelector('input[name="name"]').value,
-    };
-    setSchools([...schools, newSchool]);
+    console.log(schools);
+    setSchools([
+      ...schools,
+      document.querySelector('input[name="name"]').value,
+    ]);
   };
   return (
-    <div style={{ width: '70%', marginInline: 'auto', paddingTop: 200 }}>
+    <div style={{ width: '50%', marginInline: 'auto', paddingTop: 200 }}>
       <h1>Register School</h1>
       <div className='d-flex flex-column gap-3'>
         {inputs.map((input, index) => (
           <Input
+            defaultValue={input.defaultValue}
             key={index}
             name={input.name}
             type={input.type}

@@ -1,8 +1,10 @@
 import React from 'react';
 
 export const usePersistedState = (name, defaultValue) => {
-  const [value, setValue] = React.useState(defaultValue);
-  const nameRef = React.useRef(name);
+  const [value, setValue] = React.useState(() => {
+    const persistedValue = localStorage.getItem(name);
+    return persistedValue !== null ? deserialize(persistedValue) : defaultValue;
+  });
 
   function serialize(value) {
     return JSON.stringify({
@@ -20,15 +22,6 @@ export const usePersistedState = (name, defaultValue) => {
   }
 
   React.useEffect(() => {
-    try {
-      const storedValue = deserialize(localStorage.getItem(name));
-      if (storedValue !== null && storedValue != undefined)
-        setValue(storedValue);
-      else localStorage.setItem(name, serialize(defaultValue));
-    } catch {
-      setValue(defaultValue);
-    }
-
     const listener = document.addEventListener('storage', (event) => {
       if (event.storageArea === localStorage && event.key === name) {
         setValue(deserialize(event.newValue));
@@ -39,20 +32,10 @@ export const usePersistedState = (name, defaultValue) => {
 
   React.useEffect(() => {
     try {
-      localStorage.setItem(nameRef.current, serialize(value));
+      localStorage.setItem(name, serialize(value));
+      console.log(`Saved ${name} to localStorage with value ${value}`);
     } catch {}
   }, [value]);
-
-  React.useEffect(() => {
-    const lastName = nameRef.current;
-    if (name !== lastName) {
-      try {
-        localStorage.setItem(name, serialize(value));
-        nameRef.current = name;
-        localStorage.removeItem(lastName);
-      } catch {}
-    }
-  }, [name]);
 
   return [value, setValue];
 };
