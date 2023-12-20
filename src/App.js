@@ -107,6 +107,19 @@ function App() {
               element={<PrivateRoute component={SchoolList} />}
             />
             <Route
+              path='/praktica/projects'
+              element={<PrivateRoute component={Projects} />}
+            />
+            <Route
+              path='/praktica/outgoing'
+              element={<PrivateRoute component={Projects} />}
+            />
+            <Route
+              path='/praktica/incoming'
+              element={<PrivateRoute component={Projects} />}
+            />
+
+            <Route
               path='/praktica/schools/create'
               element={<PrivateRoute component={CreateSchool} />}
             />
