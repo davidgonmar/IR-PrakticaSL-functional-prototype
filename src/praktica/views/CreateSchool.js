@@ -1,4 +1,5 @@
 import { Input } from 'reactstrap';
+import { usePersistedState } from '../../common/usePersistedState';
 
 const inputs = [
   {
@@ -49,6 +50,14 @@ const inputs = [
 ];
 
 export function CreateSchool() {
+  const [schools, setSchools] = usePersistedState('schools', schools);
+
+  const handleCreate = () => {
+    const newSchool = {
+      name: document.querySelector('input[name="name"]').value,
+    };
+    setSchools([...schools, newSchool]);
+  };
   return (
     <div style={{ width: '70%', marginInline: 'auto', paddingTop: 200 }}>
       <h1>Register School</h1>
@@ -61,7 +70,9 @@ export function CreateSchool() {
             placeholder={input.placeholder}
           />
         ))}
-        <button className='btn btn-primary'>Create</button>
+        <button className='btn btn-primary' onClick={handleCreate}>
+          Create
+        </button>
       </div>
     </div>
   );
