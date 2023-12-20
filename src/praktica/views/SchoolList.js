@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import { Button, Input } from 'reactstrap';
 import { usePersistedState } from '../../common/usePersistedState';
 
-const schools = ['School1', 'School2', 'School3', 'School4', 'School5'];
+const _schools = ['School1', 'School2', 'School3', 'School4', 'School5'];
 
 export function SchoolList() {
   const [search, setSearch] = React.useState('');
 
-  const [schools, setSchools] = usePersistedState('schools', schools);
+  const [schools, setSchools] = usePersistedState('schools', _schools);
 
   return (
     <div style={{ width: '70%', marginInline: 'auto', paddingTop: 200 }}>
