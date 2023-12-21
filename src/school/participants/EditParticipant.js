@@ -5,38 +5,32 @@ const inputs = [
   {
     name: 'name',
     type: 'text',
-    placeholder: 'School name',
-    defaultValue: 'New School',
+    placeholder: 'First name',
+    defaultValue: 'Adam',
   },
   {
     name: 'category',
     type: 'text',
-    placeholder: 'Category',
-    defaultValue: 'New Category',
+    placeholder: 'Last Name',
+    defaultValue: 'Pérez Rodríguez',
   },
   {
-    name: 'IBAN',
+    name: 'specialty',
     type: 'text',
-    placeholder: 'IBAN',
-    defaultValue: 'ES1234567891234567891234',
+    placeholder: 'Specialty',
+    defaultValue: 'Science',
   },
   {
-    name: 'phone',
+    name: 'dni',
     type: 'text',
-    placeholder: 'Phone',
-    defaultValue: '234234234',
-  },
-  {
-    name: 'email',
-    type: 'text',
-    placeholder: 'Email',
-    defaultValue: 'dadwad@gafw.com',
+    placeholder: 'DNI',
+    defaultValue: '74623859F',
   },
   {
     name: 'address',
     type: 'text',
     placeholder: 'Address',
-    defaultValue: 'New Address',
+    defaultValue: 'Av. de asdasd',
   },
   {
     name: 'city',
@@ -45,31 +39,51 @@ const inputs = [
     defaultValue: 'Seville',
   },
   {
-    name: 'country',
+    name: 'postcode',
     type: 'text',
-    placeholder: 'Country',
-    defaultValue: 'Spain',
+    placeholder: 'Postcode',
+    defaultValue: '41011',
+  },
+  {
+    name: 'phone',
+    type: 'text',
+    placeholder: 'Phone number',
+    defaultValue: '606384625',
+  },
+  {
+    name: 'email',
+    type: 'text',
+    placeholder: 'Email',
+    defaultValue: 'juanper@gmail.com',
+  },
+  {
+    name: 'iban',
+    type: 'text',
+    placeholder: 'IBAN',
+    defaultValue: 'ES72 2487 3484 2847 3878375',
+  },
+  {
+    name: 'grading',
+    type: 'text',
+    placeholder: 'Grading',
+    defaultValue: '8.9',
   },
 ];
 
-export function CreateSchool() {
+export function EditParticipant() {
   const [schools, setSchools] = usePersistedState('schools', []);
   const navigate = useNavigate();
 
   const handleCreate = () => {
     console.log(schools);
-    setSchools([
-      ...schools,
-      document.querySelector('input[name="name"]').value,
-    ]);
 
     new Promise((resolve) => setTimeout(resolve, 100)).then(() =>
-      navigate('/praktica/schools')
+      navigate(-1)
     );
   };
   return (
     <div style={{ width: '50%', marginInline: 'auto', paddingTop: 20 }}>
-      <h1>Register School</h1>
+      <h1>Edit Participant</h1>
       <div className='d-flex flex-column gap-3'>
         {inputs.map((input, index) => (
           <Input
@@ -81,7 +95,7 @@ export function CreateSchool() {
           />
         ))}
         <button className='btn btn-primary' onClick={handleCreate}>
-          Create
+          Confirm edit
         </button>
       </div>
     </div>

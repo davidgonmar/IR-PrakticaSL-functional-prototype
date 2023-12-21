@@ -12,6 +12,17 @@ import ProjectDetails from './school/projects/details';
 import { SchoolList } from './praktica/views/SchoolList';
 import { usePersistedState } from './common/usePersistedState';
 import { CreateSchool } from './praktica/views/CreateSchool';
+import Incoming from './praktica/incoming/incoming';
+import Outgoing from './praktica/outgoing/outgoing';
+import { CreateProject } from './praktica/project/CreateProject';
+import { Partners } from './praktica/partners/partners';
+import { CreatePartner } from './praktica/partners/AddPartner';
+import { EditSchool } from './praktica/views/EditSchool';
+import { EditPartner } from './praktica/partners/EditPartner';
+import { EditProject } from './praktica/project/EditProject';
+import { Participants } from './school/participants/participants';
+import { Participant } from './school/participants/Participant';
+import { EditParticipant } from './school/participants/EditParticipant';
 
 function ErrorFallback({ error, resetErrorBoundary }) {
   return (
@@ -25,8 +36,8 @@ function ErrorFallback({ error, resetErrorBoundary }) {
 
 export const AuthContext = createContext({
   user: null,
-  login: () => {},
-  logout: () => {},
+  login: () => { },
+  logout: () => { },
 });
 
 const Role = {
@@ -99,6 +110,10 @@ function App() {
               element={<PrivateRoute component={Projects} />}
             />
             <Route
+              path='/school/projects/project'
+              element={<PrivateRoute component={ProjectDetails} />}
+            />
+            <Route
               path='/school/projects/details'
               element={<PrivateRoute component={ProjectDetails} />}
             />
@@ -112,16 +127,83 @@ function App() {
             />
             <Route
               path='/praktica/outgoing'
-              element={<PrivateRoute component={Projects} />}
+              element={<PrivateRoute component={Outgoing} />}
             />
             <Route
               path='/praktica/incoming'
-              element={<PrivateRoute component={Projects} />}
+              element={<PrivateRoute component={Incoming} />}
+            />
+
+            <Route
+              path='/praktica/partners'
+              element={<PrivateRoute component={Partners} />}
             />
 
             <Route
               path='/praktica/schools/create'
               element={<PrivateRoute component={CreateSchool} />}
+            />
+
+            <Route
+              path='/praktica/partners/add'
+              element={<PrivateRoute component={CreatePartner} />}
+            />
+
+            <Route
+              path='/praktica/projects/create'
+              element={<PrivateRoute component={CreateProject} />}
+            />
+
+            <Route
+              path='/praktica/incoming/project'
+              element={<PrivateRoute component={ProjectDetails} />}
+            />
+
+            <Route
+              path='/praktica/outgoing/project'
+              element={<PrivateRoute component={ProjectDetails} />}
+            />
+
+            <Route
+              path='/praktica/incoming/project/edit'
+              element={<PrivateRoute component={EditProject} />}
+            />
+
+            <Route
+              path='/praktica/outgoing/project/edit'
+              element={<PrivateRoute component={EditProject} />}
+            />
+
+            <Route
+              path='/praktica/partners/edit'
+              element={<PrivateRoute component={EditPartner} />}
+            />
+
+            <Route
+              path='/praktica/schools/edit'
+              element={<PrivateRoute component={EditSchool} />}
+            />
+
+            <Route
+              path='/school/projects/project/edit'
+              element={<PrivateRoute component={EditProject} />}
+            />
+            <Route
+              path='/praktica/projects/project/edit'
+              element={<PrivateRoute component={EditProject} />}
+            />
+
+            <Route
+              path='/participants'
+              element={<PrivateRoute component={Participants} />}
+            />
+            <Route
+              path='/participants/participant'
+              element={<PrivateRoute component={Participant} />}
+            />
+            <Route
+              path='/participants/edit'
+              element={<PrivateRoute component={EditParticipant} />}
             />
           </Routes>
         </AuthContext.Provider>

@@ -41,7 +41,7 @@ function AppNavbar() {
           <NavLink
             style={{ color: 'white' }}
             tag={Link}
-            to='/school/participants'
+            to='/participants'
           >
             Participants
           </NavLink>

@@ -6,13 +6,13 @@ const inputs = [
     name: 'name',
     type: 'text',
     placeholder: 'School name',
-    defaultValue: 'New School',
+    defaultValue: 'School',
   },
   {
     name: 'category',
     type: 'text',
     placeholder: 'Category',
-    defaultValue: 'New Category',
+    defaultValue: 'Category',
   },
   {
     name: 'IBAN',
@@ -52,16 +52,12 @@ const inputs = [
   },
 ];
 
-export function CreateSchool() {
+export function EditSchool() {
   const [schools, setSchools] = usePersistedState('schools', []);
   const navigate = useNavigate();
 
   const handleCreate = () => {
     console.log(schools);
-    setSchools([
-      ...schools,
-      document.querySelector('input[name="name"]').value,
-    ]);
 
     new Promise((resolve) => setTimeout(resolve, 100)).then(() =>
       navigate('/praktica/schools')
@@ -69,7 +65,7 @@ export function CreateSchool() {
   };
   return (
     <div style={{ width: '50%', marginInline: 'auto', paddingTop: 20 }}>
-      <h1>Register School</h1>
+      <h1>Edit School</h1>
       <div className='d-flex flex-column gap-3'>
         {inputs.map((input, index) => (
           <Input
@@ -81,7 +77,7 @@ export function CreateSchool() {
           />
         ))}
         <button className='btn btn-primary' onClick={handleCreate}>
-          Create
+          Confirm edit
         </button>
       </div>
     </div>

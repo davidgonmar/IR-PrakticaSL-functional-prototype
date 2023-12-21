@@ -13,6 +13,7 @@ export function SchoolList() {
 
   return (
     <div style={{ width: '70%', marginInline: 'auto', paddingTop: 200 }}>
+      <h1>Schools</h1>
       <div
         className='d-flex justify-content-between align-items-center gap-2'
         style={{ marginBottom: 20 }}
@@ -41,6 +42,7 @@ export function SchoolList() {
         items={schools.filter((school) =>
           school.toLowerCase().includes(search.toLowerCase())
         )}
+        link='/praktica/schools/edit' // Cambia esto a la ruta deseada
       />
     </div>
   );

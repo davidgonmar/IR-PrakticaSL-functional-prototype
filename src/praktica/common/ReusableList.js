@@ -1,7 +1,7 @@
-import { FaPencil } from 'react-icons/fa6';
-import { FaTrash } from 'react-icons/fa6';
+import { FaPencil, FaTrash } from 'react-icons/fa6';
+import { Link } from 'react-router-dom';
 
-export function ReusableList({ items, onDeleteItem }) {
+export function ReusableList({ items, onDeleteItem, link }) {
   return (
     <div
       className='d-flex flex-column'
@@ -17,25 +17,33 @@ export function ReusableList({ items, onDeleteItem }) {
           key={index}
           title={item}
           onDeleteItem={() => onDeleteItem(index)}
+          link={link} // Usar la prop 'link' directamente aquí
         />
       ))}
     </div>
   );
 }
 
-function Item({ title, onDeleteItem }) {
+function Item({ title, onDeleteItem, link }) {
   return (
     <div
       className='item border border-black bg-white p-2 d-flex justify-content-between align-items-center'
       style={{ borderRadius: 9999 }}
     >
       <h3 className='m-0'>{title}</h3>
-      <FaPencil className='me-2 ms-auto' style={{ height: 24, width: 24 }} />
-      <FaTrash
-        className='me-2'
-        style={{ height: 24, width: 24 }}
-        onClick={onDeleteItem}
-      />
+      <div className='d-flex align-items-center'>
+        <Link to={link}>
+          <FaPencil
+            className='me-2'
+            style={{ height: 24, width: 24, color: 'black' }} // Color negro
+          />
+        </Link>
+        <FaTrash
+          className='me-2'
+          style={{ height: 24, width: 24 }}
+          onClick={onDeleteItem}
+        />
+      </div>
     </div>
   );
 }
