@@ -6,12 +6,18 @@ import { FaPlus } from 'react-icons/fa6';
 export default function Projects() {
     const [value, setValue] = useState(null);
     const [open, setOpen] = useState(false);
+    const [showModal, setShowModal] = useState(false);
     const navigator = useNavigate();
     // TODO: Link to project details screen
 
     const handleImageClick = () => {
         // Puedes personalizar la URL a la que deseas navegar
         navigator("/praktica/project");
+    };
+
+    const handleNewProjectClick = () => {
+        // Muestra el modal al hacer clic en "New Project"
+        setShowModal(true);
     };
 
     return (
@@ -54,23 +60,23 @@ export default function Projects() {
                     </div>
                 </div>
                 <div style={{ margin: '10px auto', width: '80%', textAlign: 'center' }} className="dashboard-search-filter">
-                    <Link to="/praktica/projects/create">
-                        <Button color="primary">
-                            <FaPlus />
-                            New Project
-                        </Button>
-                    </Link>
+                
+                <Button color="primary" onClick={handleNewProjectClick}>
+                    <FaPlus />
+                    New Project
+                </Button>
+            
                 </div>
             </div>
             <Modal
-                isOpen={open}
-                toggle={() => setOpen(!open)}
+                isOpen={showModal} // Utiliza el estado showModal para controlar la visibilidad del modal
+                toggle={() => setShowModal(!showModal)}
                 backdrop="static"
             >
-                <ModalHeader toggle={() => setOpen(!open)}>Project requested successfully</ModalHeader>
+                <ModalHeader toggle={() => setShowModal(!showModal)}>Project requested successfully</ModalHeader>
                 <ModalBody>We will get back to you on email soon. When we do, please provide us with the necessary details for the project.</ModalBody>
                 <ModalFooter>
-                    <Button color="primary" onClick={() => setOpen(!open)}>
+                    <Button color="primary" onClick={() => setShowModal(!showModal)}>
                         Back
                     </Button>
                 </ModalFooter>

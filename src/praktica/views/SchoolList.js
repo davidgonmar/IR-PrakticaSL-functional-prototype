@@ -12,7 +12,7 @@ export function SchoolList() {
   const [schools, setSchools] = usePersistedState('schools', _schools);
 
   return (
-    <div style={{ width: '70%', marginInline: 'auto', paddingTop: 200 }}>
+    <div style={{ width: '70%', marginInline: 'auto', paddingTop: 20 }}>
       <h1>Schools</h1>
       <div
         className='d-flex justify-content-between align-items-center gap-2'
